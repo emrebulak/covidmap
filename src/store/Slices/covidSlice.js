@@ -15,6 +15,7 @@ export const covidSlice = createSlice({
         builder.addCase(getCovidData.pending, (state) => {
             state.isLoading = true;
             state.error = null;
+            state.data = null;
         });
         builder.addCase(getCovidData.fulfilled, (state, action) => {
             state.isLoading = false;
@@ -24,6 +25,7 @@ export const covidSlice = createSlice({
         builder.addCase(getCovidData.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.error;
+            state.data = null;
         });
     }
 });

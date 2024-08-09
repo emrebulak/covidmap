@@ -9,13 +9,15 @@ import Error from "../../components/Error"
 const Detail = () => {
     const [params] = useSearchParams()
     const code = params.get('code')
+    const query = params.get('query')
+
     const dispatch = useDispatch()
     const { isLoading, data, error } = useSelector(state => state.covid)
 
     useEffect(() => {
-        dispatch(getCovidData({ code }))
+        dispatch(getCovidData({ code, query }))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [code])
+    }, [code, query])
 
     const covidArr = Object.entries(data?.covid || {});
 
